@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Herramientas REBT</title>
+<meta name="description" content="Herramientas para el instalador electricista según el Reglamento Electrotécnico para Baja Tensión.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#f0f1f3; --panel:#ffffff; --ink:#171a1f; --mute:#5d646e; --line:#dcdfe4; --field:#f6f7f9;
+  --accent:#1f3b63; --accent-ink:#ffffff; --accent-soft:#e3e9f2; --sun:#e0a030; --s1:#2f6fb5; --s2:#c8641a; --s3:#1f8a7a; --s4:#7a55b0;
+  --ok:#17773a; --ok-bg:#dff3e5; --warn:#8a5a00; --warn-bg:#fcefcf; --bad:#a8271e; --bad-bg:#fbe2df;
+  --fase:#7a4a2b; --fase2:#222426; --fase3:#8d9296; --neutro:#3c8fd6; --pe1:#3f9d3a; --pe2:#e9d02b; --cu:#cf7a3c; --al:#c3c9cd;
+  --shadow:0 1px 2px rgba(20,24,31,.06),0 6px 18px rgba(20,24,31,.06);
+  --f-ui:"Figtree",system-ui,"Segoe UI",Roboto,sans-serif; --f-num:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101216; --panel:#1a1d23; --ink:#eceef1; --mute:#9ba2ad; --line:#2d323b; --field:#13161b;
+  --accent:#9dbcec; --accent-ink:#0c1a30; --accent-soft:#222c3d; --sun:#f2b656; --s1:#4a8ad4; --s2:#c2742e; --s3:#3aa898; --s4:#9a7bd0;
+  --ok:#74d692; --ok-bg:#15301f; --warn:#f1c669; --warn-bg:#352b10; --bad:#ffa096; --bad-bg:#3b1b18;
+  --fase:#a8734f; --fase2:#4d5356; --fase3:#b9bec2; --neutro:#5aa9ea; --pe1:#57b852; --pe2:#e9d02b; --cu:#dd8f52; --al:#cfd5d8;
+  --shadow:0 1px 2px rgba(0,0,0,.4); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101216; --panel:#1a1d23; --ink:#eceef1; --mute:#9ba2ad; --line:#2d323b; --field:#13161b;
+  --accent:#9dbcec; --accent-ink:#0c1a30; --accent-soft:#222c3d; --sun:#f2b656; --s1:#4a8ad4; --s2:#c2742e; --s3:#3aa898; --s4:#9a7bd0;
+  --ok:#74d692; --ok-bg:#15301f; --warn:#f1c669; --warn-bg:#352b10; --bad:#ffa096; --bad-bg:#3b1b18;
+  --fase:#a8734f; --fase2:#4d5356; --fase3:#b9bec2; --neutro:#5aa9ea; --pe1:#57b852; --pe2:#e9d02b; --cu:#dd8f52; --al:#cfd5d8;
+  --shadow:0 1px 2px rgba(0,0,0,.4); color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.5 var(--f-ui);padding:28px 16px 56px}
+.wrap{max-width:920px;margin-inline:auto;display:flex;flex-direction:column;gap:26px}
+header{display:flex;align-items:center;gap:14px}
+.logo{width:52px;height:52px;border-radius:14px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+h1{font:700 30px/1.1 var(--f-ui);margin:0;letter-spacing:-.015em}
+header p{margin:5px 0 0;color:var(--mute);font-size:15px;max-width:60ch}
+.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.app{display:flex;flex-direction:column;gap:12px;background:var(--panel);border-radius:18px;box-shadow:var(--shadow);padding:22px;text-decoration:none;color:inherit;border:2px solid transparent;transition:border-color .15s,transform .15s}
+.app:hover,.app:focus-visible{border-color:var(--accent);outline:0;transform:translateY(-2px)}
+.ilu{margin:-22px -22px 4px;padding:18px 0;background:var(--accent-soft);border-radius:16px 16px 0 0;display:grid;place-items:center}
+.ilu svg{width:128px;height:128px;display:block}
+.app h2{font:700 21px/1.15 var(--f-ui);margin:0}
+.ver{font:700 11px var(--f-ui);background:var(--accent-soft);color:var(--accent);padding:3px 8px;border-radius:99px;vertical-align:3px;margin-left:6px;letter-spacing:.03em}
+.app p{margin:0;color:var(--mute);font-size:14.5px}
+.app ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:3px}
+.ir{margin-top:auto;align-self:flex-start;font:700 14.5px var(--f-ui);background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:10px}
+.prox{border:2px dashed var(--line);border-radius:18px;padding:18px 22px;color:var(--mute);font-size:14.5px}
+footer{color:var(--mute);font-size:12.5px}
+footer a{color:var(--accent)}
+@media (max-width:700px){.apps{grid-template-columns:minmax(0,1fr)} h1{font-size:25px} .ilu svg{width:112px;height:112px}}
+@media (prefers-reduced-motion:reduce){.app{transition:none}.app:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 5 13h6l-1 9 8-11h-6z"/></svg></div>
+  <div><h1>Herramientas REBT</h1><p>Ecosistema de herramientas para el instalador, según los criterios del Reglamento Electrotécnico para Baja Tensión.</p></div>
+</header>
+<main class="apps">
+  <a class="app" href="https://east101.github.io/calculadora-rebt/">
+    <div class="ilu" aria-hidden="true"><svg viewBox="0 0 120 120">
+      <rect x="28" y="8" width="64" height="104" rx="10" fill="var(--accent)"/>
+      <rect x="36" y="17" width="48" height="26" rx="4" fill="var(--panel)"/>
+      <path d="M62 35h16M70 26h8" stroke="var(--accent)" stroke-width="3.2" stroke-linecap="round"/>
+      <g fill="var(--accent-ink)" fill-opacity=".85"><rect x="36" y="51" width="12" height="12" rx="3"/><rect x="54" y="51" width="12" height="12" rx="3"/><rect x="72" y="51" width="12" height="12" rx="3"/><rect x="36" y="69" width="12" height="12" rx="3"/><rect x="54" y="69" width="12" height="12" rx="3"/><rect x="36" y="87" width="12" height="12" rx="3"/><rect x="54" y="87" width="12" height="12" rx="3"/></g>
+      <rect x="72" y="69" width="12" height="30" rx="3" fill="var(--sun)"/><path d="M75 81.5h6M75 86.5h6" stroke="#3a2a00" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <h2>Calculadora REBT <span class="ver">Beta 2</span></h2>
+    <p>Sección de cable, caída de tensión y protección de cada línea.</p>
+    <ul><li>Redes, acometidas e instalación de enlace</li><li>Circuitos de vivienda e interiores</li><li>Recarga de vehículo eléctrico</li></ul>
+    <span class="ir">Abrir la calculadora</span>
+  </a>
+  <a class="app" href="https://east101.github.io/asesor-prot-rebt/">
+    <div class="ilu" aria-hidden="true"><svg viewBox="0 0 120 120">
+      <rect x="6" y="52" width="108" height="16" rx="3" fill="var(--line)"/>
+      <g stroke="var(--ink)" stroke-width="2.6" fill="var(--panel)"><rect x="16" y="12" width="50" height="96" rx="7"/><rect x="72" y="12" width="32" height="96" rx="7"/></g>
+      <g fill="none" stroke="var(--mute)" stroke-width="1.8"><circle cx="28" cy="22" r="3.2"/><circle cx="54" cy="22" r="3.2"/><circle cx="28" cy="98" r="3.2"/><circle cx="54" cy="98" r="3.2"/><circle cx="88" cy="22" r="3.2"/><circle cx="88" cy="98" r="3.2"/></g>
+      <rect x="23" y="33" width="17" height="27" rx="4" fill="var(--accent)"/><rect x="79" y="33" width="18" height="27" rx="4" fill="var(--accent)"/>
+      <rect x="45" y="37" width="15" height="15" rx="4" fill="var(--sun)"/><path d="M49 41.5h7M52.5 41.5v7" stroke="#3a2a00" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 80h32M31 72v16M41 72v16M51 72v16" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round" opacity=".0"/>
+      <path d="M43 68 33 82h8l-3 10 11-15h-8z" fill="var(--sun)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M80 86q4-18 8-9t9-7" fill="none" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"/></svg></div>
+    <h2>Asesor de protecciones <span class="ver">Beta 1</span></h2>
+    <p>Qué protecciones poner en cada cuadro de una instalación nueva.</p>
+    <ul><li>Diferenciales, selectividad y curva de los magnetotérmicos</li><li>Interruptor general y protector contra sobretensiones</li><li>Esquema descargable de la instalación</li></ul>
+    <span class="ir">Abrir el asesor</span>
+  </a>
+</main>
+<div class="prox">Más herramientas en preparación.</div>
+<footer>Herramientas orientativas: no sustituyen al proyecto ni a la memoria técnica. Licencia Creative Commons BY-NC-SA 4.0. Código en <a href="https://github.com/east101">github.com/east101</a>.</footer>
+</div>
+</body>
+</html>
